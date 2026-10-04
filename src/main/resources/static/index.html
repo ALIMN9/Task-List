@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Tasks</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="top">
+      <div>
+        <h1>My Tasks</h1>
+        <p class="subtitle" id="counter"></p>
+      </div>
+      <!-- Click this to open the pop-up form -->
+      <button type="button" id="new-btn">+ New task</button>
+    </header>
+
+    <!-- Shown when loading / ticking / deleting fails -->
+    <p id="page-error" class="error" hidden></p>
+
+    <!-- The list of tasks is built by app.js -->
+    <ul id="task-list" class="task-list"></ul>
+    <p id="empty" class="empty" hidden>No tasks yet. Click "+ New task" to add your first one.</p>
+  </main>
+
+  <!-- Pop-up (modal) with the form: hidden until opened by app.js -->
+  <dialog id="task-dialog">
+    <form id="task-form">
+      <h2 id="form-title">Add a task</h2>
+
+      <label>Title
+        <input type="text" id="title" maxlength="255" placeholder="What needs to be done?" required>
+      </label>
+
+      <label>Description <span class="optional">(optional)</span>
+        <textarea id="description" maxlength="1000" rows="2"></textarea>
+      </label>
+
+      <div class="row">
+        <label>Due date <span class="optional">(optional)</span>
+          <input type="date" id="dueDate">
+        </label>
+        <label>Priority
+          <select id="priority">
+            <option value="HIGH">High</option>
+            <option value="MEDIUM" selected>Medium</option>
+            <option value="LOW">Low</option>
+          </select>
+        </label>
+      </div>
+
+      <p id="error" class="error" hidden></p>
+
+      <div class="buttons">
+        <button type="submit" id="submit-btn">Add task</button>
+        <button type="button" id="cancel-btn" class="secondary">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
